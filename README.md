@@ -1,12 +1,16 @@
   Quick Fix by Junliu
   
   1. First, the checkboard example is stored in Google Drive. It is a little bit hard for those people who lived in China mainland to download all that files. I will try a way to get those files and upload to BaiduDisk(百度网盘) or other network disk.
+
   2. There are some mistakes in the main program and parameter file:
+  
     2.a In folder "checkers"(the checkboard example folder)， the Par_file in "specfem2d-d745c542"， the parameter "f0_attenuation" should be changed into "ATTENUATION_f0_REFERENCE".
+    
     2.b After change this parameter, the program still goes wrong. The error information should be found in "checkers/scratch/solver/#NUMBER#/solver.log", the #NUMBER# is the id of sources. SPECFEM2D would tell you the parameter you miss. Add them into the Par_file
+    
     3.c Then the program will suck in “Generating synthetic data”， we could find this situation in terminal. It may cause by different version of SPECFEM2D. We could modify the seisflow code in "seisflows/seisflows/specfem2d.py". Search and subtitude the "unix.rename('single_p.su', 'single.su', src)" into "unix.rename('single_d.su', 'single.su', src)" will fix the problem. Notice that there are two line to change.
-    3.d Then the program will suck in “Computing gradient” at the end of "task 25 of 25". The terminal will tell you 
-KeyError: 'MINUSGRADIENT'. After checking the "seisflows/seisflows/workflow/inversion.py", I think the better way to fix it is change the “parameters.py” in "checkers" folder. Add "MINUSGRADIENT=1" of section "#WORKFLOW" in “parameters.py” , and add "MINUSGRADIENT：1" of section "#WORKFLOW" in "parameters.yaml"
+    
+    3.d Then the program will suck in “Computing gradient” at the end of "task 25 of 25". The terminal will tell you KeyError: 'MINUSGRADIENT'. After checking the "seisflows/seisflows/workflow/inversion.py", I think the better way to fix it is change the “parameters.py” in "checkers" folder. Add "MINUSGRADIENT=1" of section "#WORKFLOW" in “parameters.py” , and add "MINUSGRADIENT：1" of section "#WORKFLOW" in "parameters.yaml"
 
 My intuition told me there should be more problem during the running of program.
 still updating 
