@@ -1,0 +1,5 @@
+
+DATA = '/home/junliu/tomoCode/seisflows/tests/setup/test_preprocess/data.su'
+
+SYNTHETICS = '/home/junliu/tomoCode/seisflows/tests/setup/test_preprocess/synthetics.su'
+

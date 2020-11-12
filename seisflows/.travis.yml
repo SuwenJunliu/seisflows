@@ -1,0 +1,18 @@
+language: python
+python:
+  - "2.7"
+
+install:
+  - pip install --upgrade pip setuptools wheel
+  - pip install --only-binary=numpy,scipy numpy scipy
+  - pip install coveralls
+
+script:
+  - export PYTHONPATH=$PYTHONPATH:$(pwd)
+  - export PATH=$PATH:$(pwd)/scripts
+  - tests/run_test_import
+  - tests/run_test_optimize
+  - tests/run_test_system
+  - tests/run_test_tools
+
+

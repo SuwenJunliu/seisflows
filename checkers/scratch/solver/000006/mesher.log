@@ -1,0 +1,173 @@
+ 
+ **********************************************
+ *** Specfem 2-D Mesher - serial version    ***
+ **********************************************
+ 
+ Running Git version of the code corresponding to 
+ commit a213b4bf06b5a89d16eef4d10eba8346c3d9607f
+ dating From Date:   Thu Oct 1 10:54:07 2020 -0400
+ 
+ Reading the parameter file...
+ 
+ Title of the simulation: checkers
+ 
+ 
+ Receiver lines:
+   Nb of line sets =            2
+ 
+ Materials:
+   Nb of solid, fluid or porous materials =            1
+ 
+ --------
+ Material #           1  isotropic
+ rho,cp,cs   =    2600.00000000000        5800.00000000000     
+   3500.00000000000     
+ Qkappa, Qmu =    10.0000000000000        10.0000000000000     
+ Material is solid
+ --------
+ 
+ 
+ Mesh from internal meshing:
+ 
+ Reading interface data from file: ./DATA/interfaces.dat
+ Reading            2  points for interface            1
+ Reading            2  points for interface            2
+ 
+ Total number of layers in z direction =            1
+ There are           40  spectral elements along Z in layer            1
+ 
+ Total number of spectral elements along X =           40
+ Total number of spectral elements along Z =           40
+ 
+ Regions:
+   Nb of regions in the mesh =            1
+ 
+ ------
+ Region            1
+ IX from            1  to           40
+ IZ from            1  to           40
+ Material #            1  isotropic
+ Material is solid
+ vp     =    5800.000    
+ vs     =    3500.000    
+ rho    =    2600.000    
+ Poisson's ratio =   0.2136512    
+ QKappa =    10.00000    
+ Qmu    =    10.00000    
+ ------
+ 
+ Parameter file successfully read 
+ 
+ 
+ Mesh from internal meshing:
+   Total number of spectral elements         =         1600
+ 
+ PML mesh elements:
+   Total number of PML elements =            0
+ 
+ The mesh contains         1600  elements
+ 
+ Control elements have            9  nodes
+ 
+ Reading in SOURCE file...
+ 
+ Source           1
+   Position xs, zs =    204670.830000000        441693.440000000     
+ 
+   Source type (1=force, 2=moment tensor):            1
+   Force source:
+   Angle of the source (deg) =   0.000000000000000E+000
+ 
+   Time function type (1=Ricker, 2=First derivative, 3=Gaussian, 4=Dirac, 5=Heav
+ iside, 6,7=ocean type, 8=Read from file, 9=burst, 10=Sinusoidal, 11=Ormsby):
+           1
+   Ricker wavelet (second-derivative):
+   Frequency, delay =   8.400000000000001E-002  0.000000000000000E+000
+   Multiplying factor  =    10000000000.0000     
+ 
+ all sources are okay
+ 
+ Normals to surface not needed
+ 
+ Node coordinates:
+ 
+ reading node coordinates from interfaces...
+ 
+ Mesh surfaces:
+   determining acoustic free surface...
+   number of acoustic elements with free surface =            0
+ 
+   determining absorbing boundary surfaces...
+   number of elements with absorbing boundaries =          160
+ 
+ 
+ Mesh dimensions: 
+   Min and max value of X in the grid =   0.000000000000000E+000
+   480000.000000000     
+   Min and max value of Z in the grid =   0.000000000000000E+000
+   480000.000000000     
+ 
+ Mesh partitioning:
+   decomposing mesh using NPROC =            1
+ 
+ Graph construction:
+   graph adjacency done
+ 
+ Coupled interfaces:
+ nedges_coupled (acoustic/elastic)     =            0
+ nedges_coupled (acoustic/poroelastic) =            0
+ nedges_coupled (poroelastic/elastic)  =            0
+ 
+ Local numbering:
+   NPROC:            1
+   number of elements:         1600
+ 
+ decompose mesh all done
+ 
+ Absorbing boundaries:
+   nedge_bound   :          160
+   nelemabs_merge:          160
+ 
+ Saving databases:
+   database file: ./OUTPUT_FILES/Database00000.bin
+   slice            0  has number of spectral elements =        1600
+ 
+   VTK mesh files:
+   written file: ./OUTPUT_FILES//mesh_materials.vtk
+   written file: ./OUTPUT_FILES//mesh_partition_number.vtk
+   done
+ 
+ creating STATIONS file...
+ 
+ writing the ./DATA/STATIONS file
+ 
+ 
+ There are           22  receivers
+ 
+ Target positions (x,z) of the           22  receivers
+ 
+ Receiver            1  =    300.000000000000        480000.000000000     
+ Receiver            2  =    640.000000000000        480000.000000000     
+ Receiver            3  =    980.000000000000        480000.000000000     
+ Receiver            4  =    1320.00000000000        480000.000000000     
+ Receiver            5  =    1660.00000000000        480000.000000000     
+ Receiver            6  =    2000.00000000000        480000.000000000     
+ Receiver            7  =    2340.00000000000        480000.000000000     
+ Receiver            8  =    2680.00000000000        480000.000000000     
+ Receiver            9  =    3020.00000000000        480000.000000000     
+ Receiver           10  =    3360.00000000000        480000.000000000     
+ Receiver           11  =    3700.00000000000        480000.000000000     
+ Receiver           12  =    2500.00000000000        2500.00000000000     
+ Receiver           13  =    2500.00000000000        2250.00000000000     
+ Receiver           14  =    2500.00000000000        2000.00000000000     
+ Receiver           15  =    2500.00000000000        1750.00000000000     
+ Receiver           16  =    2500.00000000000        1500.00000000000     
+ Receiver           17  =    2500.00000000000        1250.00000000000     
+ Receiver           18  =    2500.00000000000        1000.00000000000     
+ Receiver           19  =    2500.00000000000        750.000000000000     
+ Receiver           20  =    2500.00000000000        500.000000000000     
+ Receiver           21  =    2500.00000000000        250.000000000000     
+ Receiver           22  =    2500.00000000000       0.000000000000000E+000
+ 
+ This will be a serial simulation
+ 

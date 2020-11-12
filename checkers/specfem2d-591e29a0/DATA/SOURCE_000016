@@ -1,0 +1,15 @@
+source_surf = .false.
+xs =135933.15
+zs =373123.66
+source_type = 1
+time_function_type = 1
+name_of_source_file             = YYYYYYYYYYYYYYYYYY
+burst_band_width                = 0.             
+f0 = 0.084
+tshift = 0.0
+anglesource = 0.0
+Mxx = 1.0
+Mzz = 1.0
+Mxz = 0.0
+factor = 10000000000.0
+
