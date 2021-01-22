@@ -1,5 +1,8 @@
   #Update
+  
     1. I have already update the checkboard test. I added some pritn statement to debug, so the output of terminal will be mess up. I should recheck all the modify I had made, and rearrange the output.
+    
+    
     2. I should find some methods to set up the checkboard. Nanqiao told me that we should convert the gll for binary file to ascii file, then add the perburbations on it, but I do not figure out the order of this ascii file. 
   
   
