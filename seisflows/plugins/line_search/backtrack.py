@@ -46,11 +46,10 @@ class Backtrack(Bracket):
             status = 0
 
         elif _check_decrease(x, f):
-            alpha = x[f.argmin()]
+            alpha = x[f.argmin()] 
             status = 1
 
         elif step_count <= self.step_count_max:
-            # we need a smaller step length
             slope = gtp[-1]/gtg[-1]
             alpha = backtrack2(f[0], slope, x[1], f[1], b1=0.1, b2=0.5)
             status = 0

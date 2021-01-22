@@ -157,16 +157,19 @@ class base(object):
 
         else:
             # generate data on the fly
+            # edit by junliu
+            # I dont know what "on the fly"
+            # but it should change
             self.generate_data(
                 model_path=PATH.MODEL_TRUE,
                 model_name='model_true',
-                model_type='gll')
+                model_type='binary')
 
         # prepare initial model mesh
         self.generate_mesh(
             model_path=PATH.MODEL_INIT,
             model_name='model_init',
-            model_type='gll')
+            model_type='binary')
 
         # Adjoint traces (in scratch/solver/source_name/traces/adj)are
         # initialized below by writing zeros for all channels (even the ones
@@ -220,6 +223,7 @@ class base(object):
         """
         unix.cd(self.cwd)
         self.adjoint()
+        print "hehe?"
         self.export_kernels(path)
         if export_traces:
             self.export_traces(path+'/'+'traces/syn', prefix='traces/syn')
@@ -314,6 +318,7 @@ class base(object):
         for key in parameters or self.parameters:
             for iproc in range(self.mesh_properties.nproc):
                 m = np.append(m, model[key][iproc])
+                print(m)
         return m
 
     def split(self, m, parameters=[]):
@@ -425,6 +430,7 @@ class base(object):
 
         src = join(self.cwd, prefix)
         dst = join(path, self.source_name)
+        print self.source_name
         unix.cp(src, dst)
 
     def rename_kernels(self):
@@ -581,6 +587,7 @@ class base(object):
         for path in globstar:
             names += [basename(path).split('_')[-1]]
         self._source_names = names[:PAR.NTASK]
+        #print self._source_names
 
     def check_solver_parameter_files(self):
         # optional method, can be implemented by subclass

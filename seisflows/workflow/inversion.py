@@ -201,6 +201,8 @@ class inversion(base):
 
             elif status == 0:
                 continue
+            # why it should be 0? junliu
+
 
             elif status < 0:
                 if optimize.retry_status():

@@ -94,7 +94,10 @@ class Base(object):
         self.func_vals += [func_val]
 
         self.writer(step_len, func_val)
-
+        
+        print(self.calculate_step())
+        
+        
         return self.calculate_step()
 
     def calculate_step(self):

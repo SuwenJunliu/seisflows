@@ -33,6 +33,7 @@ class Bracket(Base):
         """ Determines step length and search status
         """
         x, f, gtg, gtp, step_count, update_count = self.search_history()
+        
 
         if step_count == 0 and update_count == 0:
             # based on idea from Dennis and Schnabel
@@ -59,9 +60,11 @@ class Bracket(Base):
             status = 0
 
         elif step_count <= self.step_count_max:
+            print("we need a smaller step length")
             # we need a smaller step length
             slope = gtp[-1]/gtg[-1]
             alpha = backtrack2(f[0], slope, x[1], f[1], b1=0.1, b2=0.5)
+            #print("we need a smaller step length")
             status = 0
 
         else:
@@ -79,7 +82,8 @@ class Bracket(Base):
             # stop because safeguard prevents us from going further
             alpha = self.step_len_max
             status = 1
-
+            
+        
         return alpha, status
 
 
@@ -91,6 +95,7 @@ def _check_bracket(step_lens, func_vals):
     if (fmin < f[0]) and any(f[imin:] > fmin):
         return 1
     else:
+        print("not decrease_check_bracket",f.min(),f[0])
         return 0
 
 
@@ -100,8 +105,12 @@ def _good_enough(step_lens, func_vals, thresh=np.log10(1.2)):
     x, f = step_lens, func_vals
     if not _check_bracket(x, f):
         return 0
+    print("x",x)
+    print("f",f)
     x0 = polyfit2(x, f)
+    print("x0 " + str(x0))
     if any(np.abs(np.log10(x[1:]/x0)) < thresh):
         return 1
     else:
+        print("not good ",np.min(np.abs(np.log10(x[1:]/x0))),thresh)
         return 0

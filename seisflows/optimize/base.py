@@ -131,6 +131,8 @@ class base(object):
         unix.mkdir(PATH.OPTIMIZE)
         if 'MODEL_INIT' in PATH:
             solver = sys.modules['seisflows_solver']
+            print("MODEL_INITAAAAA")
+            print(PATH.MODEL_INIT)
             self.save('m_new', solver.merge(solver.load(PATH.MODEL_INIT)))
 
     def compute_direction(self):
@@ -149,6 +151,9 @@ class base(object):
         """ Determines first step length in line search
         """
         m = self.load('m_new')
+        #print (initialize_search)
+        print (m)
+        
         g = self.load('g_new')
         p = self.load('p_new')
         f = self.loadtxt('f_new')
@@ -167,6 +172,8 @@ class base(object):
 
         # determine initial step length
         alpha, _ = self.line_search.initialize(0., f, gtg, gtp)
+        print("determine initial step length ")
+        print f,gtg,gtp
 
         # optional initial step length override
         if PAR.STEPLENINIT and len(self.line_search.step_lens) <= 1:
@@ -174,6 +181,7 @@ class base(object):
 
         # write model corresponding to chosen step length
         self.savetxt('alpha', alpha)
+        print("init "+str(alpha*p))
         self.save('m_try', m + alpha*p)
 
     def update_search(self):
@@ -182,7 +190,7 @@ class base(object):
           Status codes
               status > 0  : finished
               status == 0 : not finished
-              status < 0  : failed
+              status < 0  : failed 
         """
         alpha, status = self.line_search.update(
             self.loadtxt('alpha'),
@@ -191,8 +199,11 @@ class base(object):
         if status >= 0:
             # write model corresponding to chosen step length
             m = self.load('m_new')
+            print("update_search")
+            print (m)
             p = self.load('p_new')
             self.savetxt('alpha', alpha)
+            print("update "+str(alpha*p))
             self.save('m_try', m + alpha*p)
         return status
 
@@ -201,6 +212,8 @@ class base(object):
           model upate
         """
         m = self.load('m_new')
+        print("finalize_search")
+        print (m)
         g = self.load('g_new')
         p = self.load('p_new')
         x = self.line_search.search_history()[0]

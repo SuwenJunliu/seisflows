@@ -9,6 +9,7 @@
 # Import Numpy and utilities from Scipy
 import numpy as np
 from scipy.signal import hilbert as _analytic
+import matplotlib.pyplot as plt
 
 
 def Waveform(syn, obs, nt, dt):

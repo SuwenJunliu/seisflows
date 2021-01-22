@@ -108,6 +108,7 @@ class LBFGS(object):
             n = self.memory
             S = np.memmap('LBFGS/S', mode='w+', dtype='float32', shape=(m, n))
             Y = np.memmap('LBFGS/Y', mode='w+', dtype='float32', shape=(m, n))
+            print "writing LBFGS/S or Y"
 
         # first matrix product
         kk = self.memory_used
@@ -142,6 +143,7 @@ class LBFGS(object):
         self.memory_used = 0
 
         unix.cd(self.path)
+        print self.path
         S = np.memmap('LBFGS/S', mode='r+')
         Y = np.memmap('LBFGS/Y', mode='r+')
         S[:] = 0.

@@ -83,7 +83,7 @@ save_binary_seismograms_double  = .false.
 SU_FORMAT                       = .true.        
 
 
-use_existing_STATIONS           = .false.
+use_existing_STATIONS           = .true.
 
 
 nreceiversets                   = 2

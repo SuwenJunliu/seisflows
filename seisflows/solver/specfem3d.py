@@ -65,6 +65,7 @@ class specfem3d(custom_import('solver', 'base')):
         unix.cd(self.cwd)
         setpar('SIMULATION_TYPE', '1')
         setpar('SAVE_FORWARD', '.true.')
+        print "use xspecfem3d?"
         call_solver(system.mpiexec(), 'bin/xspecfem3D')
 
         if PAR.FORMAT in ['SU', 'su']:

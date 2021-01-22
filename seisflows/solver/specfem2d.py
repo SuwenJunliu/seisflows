@@ -9,6 +9,7 @@
 import sys
 from os.path import basename, join
 from glob import glob
+import os
 
 # Import Numpy
 import numpy as np
@@ -125,7 +126,9 @@ class specfem2d(custom_import('solver', 'base')):
             src = glob('OUTPUT_FILES/*.su')
             # work around SPECFEM2D's different file names (depending on the
             # version used :
-            unix.rename('single_p.su', 'single.su', src)
+            # ?? junliu
+            # _d?
+            unix.rename('single_d.su', 'single.su', src)
             src = glob('OUTPUT_FILES/*.su')
             dst = 'traces/obs'
             unix.mv(src, dst)
@@ -149,6 +152,7 @@ class specfem2d(custom_import('solver', 'base')):
             for channel in ['x', 'y', 'z', 'p']:
                 src = 'U%s_file_single.su.adj' % PAR.CHANNELS[0]
                 dst = 'U%s_file_single.su.adj' % channel
+                print dst
                 if not exists(dst):
                     unix.cp(src, dst)
 
@@ -169,6 +173,12 @@ class specfem2d(custom_import('solver', 'base')):
         self.check_mesh_properties(model_path)
 
         # Copy the model files (ex: proc000023_vp.bin ...) into DATA
+        
+        # modify by junliu
+        # it seems that should change the model_type
+        setpar('MODEL', model_type)
+        print model_type
+        
         src = glob(join(model_path, '*'))
         dst = join(self.cwd, 'DATA')
         unix.cp(src, dst)
@@ -192,7 +202,7 @@ class specfem2d(custom_import('solver', 'base')):
             filenames = glob('OUTPUT_FILES/*.su')
             # work around SPECFEM2D's different file names (depending on the
             # version used :
-            unix.rename('single_p.su', 'single.su', filenames)
+            unix.rename('single_d.su', 'single.su', filenames)
             filenames = glob('OUTPUT_FILES/*.su')
             unix.mv(filenames, path)
 
@@ -210,6 +220,7 @@ class specfem2d(custom_import('solver', 'base')):
             files = glob('traces/adj/*.su')
             unix.rename('.su', '.su.adj', files)
 
+        os.getcwd()
         call_solver(system.mpiexec(), 'bin/xmeshfem2D')
         call_solver(system.mpiexec(), 'bin/xspecfem2D')
 
